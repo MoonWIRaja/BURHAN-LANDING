@@ -1,0 +1,17 @@
+{
+  "name": "@workspace/eslint-config",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "exports": {
+    "./base": "./base.js",
+    "./next-js": "./next.js"
+  },
+  "dependencies": {
+    "@eslint/js": "latest",
+    "eslint-plugin-only-warn": "latest",
+    "eslint-plugin-react-hooks": "latest",
+    "globals": "latest",
+    "typescript-eslint": "latest"
+  }
+}
