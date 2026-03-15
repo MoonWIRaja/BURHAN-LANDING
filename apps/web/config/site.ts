@@ -1,4 +1,4 @@
-export type NavIconKey = "home" | "plan" | "faq" | "contact"
+export type NavIconKey = "home" | "plan" | "features" | "faq" | "contact"
 
 export interface SiteNavItem {
   name: string
@@ -34,12 +34,16 @@ export interface ServerBuildOption {
 }
 
 export const brandName = "BurHan Hosting"
+export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://burhan.my"
 export const consoleUrl =
   process.env.NEXT_PUBLIC_CONSOLE_URL ?? "https://console.burhan.my"
+export const discordUrl =
+  process.env.NEXT_PUBLIC_DISCORD_URL ?? "https://discord.gg/qBZhBgYb"
 
 export const siteNavigation: SiteNavItem[] = [
   { name: "Home", url: "/", icon: "home" },
   { name: "Custom Plan", url: "/custom-plan", icon: "plan" },
+  { name: "Features", url: "/features", icon: "features" },
   { name: "FAQ", url: "/faq", icon: "faq" },
   { name: "Contact", url: "/contact", icon: "contact" },
 ]

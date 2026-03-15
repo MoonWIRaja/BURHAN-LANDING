@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import {
   Card,
   CardContent,
@@ -7,6 +8,15 @@ import {
 import { SectionHeading } from "@/components/section-heading"
 import { ServerBuildSelector } from "@/components/server-build-selector"
 import { deliverySteps } from "@/config/site"
+
+export const metadata: Metadata = {
+  title: "Custom Plan",
+  description:
+    "Select a BurHan Hosting server profile and shape your final game-server deployment through the console workflow.",
+  alternates: {
+    canonical: "/custom-plan",
+  },
+}
 
 export default function CustomPlanPage() {
   return (

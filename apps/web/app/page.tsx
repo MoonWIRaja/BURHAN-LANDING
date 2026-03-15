@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 
@@ -8,6 +9,15 @@ import { Separator } from "@workspace/ui/components/separator"
 import { FloatingIconsHeroDemo } from "@/components/floating-icons-hero-demo"
 import { OurStoryBentoGrid } from "@/components/our-story-bento-grid"
 import { consoleUrl, serverBuildOptions } from "@/config/site"
+
+export const metadata: Metadata = {
+  title: "Custom Game Server Hosting Malaysia",
+  description:
+    "BurHan Hosting delivers custom-built game servers for Malaysian communities with console-first operations and launch-ready infrastructure.",
+  alternates: {
+    canonical: "/",
+  },
+}
 
 export default function HomePage() {
   return (

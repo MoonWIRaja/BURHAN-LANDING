@@ -3,6 +3,7 @@
 import {
   CircleHelp,
   Home,
+  LayoutGrid,
   Mail,
   SlidersHorizontal,
   SquareArrowOutUpRight,
@@ -14,6 +15,7 @@ import { NavBar, type NavItem } from "@/components/ui/tubelight-navbar"
 const iconMap = {
   home: Home,
   plan: SlidersHorizontal,
+  features: LayoutGrid,
   faq: CircleHelp,
   contact: Mail,
 } as const

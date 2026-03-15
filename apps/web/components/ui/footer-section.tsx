@@ -3,9 +3,9 @@
 import React from "react"
 import type { ComponentProps, ReactNode } from "react"
 import { motion, useReducedMotion } from "motion/react"
-import { FacebookIcon, FrameIcon, InstagramIcon, LinkedinIcon, YoutubeIcon } from "lucide-react"
+import { FrameIcon, MessageCircle } from "lucide-react"
 
-import { brandName, consoleUrl } from "@/config/site"
+import { brandName, consoleUrl, discordUrl } from "@/config/site"
 
 interface FooterLink {
   title: string
@@ -49,10 +49,7 @@ const footerLinks: FooterGroup[] = [
   {
     label: "Social Links",
     links: [
-      { title: "Facebook", href: "#", icon: FacebookIcon },
-      { title: "Instagram", href: "#", icon: InstagramIcon },
-      { title: "Youtube", href: "#", icon: YoutubeIcon },
-      { title: "LinkedIn", href: "#", icon: LinkedinIcon },
+      { title: "Discord", href: discordUrl, icon: MessageCircle },
     ],
   },
 ]
@@ -81,17 +78,23 @@ export function FooterSection() {
                   {group.label}
                 </h3>
                 <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-                  {group.links.map((link) => (
-                    <li key={link.title}>
-                      <a
-                        href={link.href}
-                        className="inline-flex items-center transition-colors duration-300 hover:text-foreground"
-                      >
-                        {link.icon ? <link.icon className="me-1 size-4" /> : null}
-                        {link.title}
-                      </a>
-                    </li>
-                  ))}
+                  {group.links.map((link) => {
+                    const isExternal = link.href.startsWith("http")
+
+                    return (
+                      <li key={link.title}>
+                        <a
+                          href={link.href}
+                          target={isExternal ? "_blank" : undefined}
+                          rel={isExternal ? "noreferrer" : undefined}
+                          className="inline-flex items-center transition-colors duration-300 hover:text-foreground"
+                        >
+                          {link.icon ? <link.icon className="me-1 size-4" /> : null}
+                          {link.title}
+                        </a>
+                      </li>
+                    )
+                  })}
                 </ul>
               </div>
             </AnimatedContainer>

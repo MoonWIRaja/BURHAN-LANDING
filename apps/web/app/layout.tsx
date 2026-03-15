@@ -5,6 +5,7 @@ import { Manrope, Space_Grotesk } from "next/font/google"
 import "./globals.css"
 import { SiteFooter } from "@/components/site-footer"
 import { SiteNavbar } from "@/components/site-navbar"
+import { siteUrl } from "@/config/site"
 
 const fontBody = Manrope({
   subsets: ["latin"],
@@ -16,13 +17,31 @@ const fontHeading = Space_Grotesk({
   variable: "--font-heading",
 })
 
+const siteDescription =
+  "Premium multi-game server hosting with custom builds, console-first operations, and launch-ready infrastructure."
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
     default: "BurHan Hosting",
     template: "%s | BurHan Hosting",
   },
-  description:
-    "Premium multi-game server hosting with custom builds, console-first operations, and launch-ready infrastructure.",
+  description: siteDescription,
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    url: siteUrl,
+    title: "BurHan Hosting",
+    description: siteDescription,
+    siteName: "BurHan Hosting",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "BurHan Hosting",
+    description: siteDescription,
+  },
 }
 
 export default function RootLayout({

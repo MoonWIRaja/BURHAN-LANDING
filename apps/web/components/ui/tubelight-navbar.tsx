@@ -53,6 +53,7 @@ export function NavBar({ items, className, cta }: NavBarProps) {
             <Link
               key={item.name}
               href={item.url}
+              aria-label={item.name}
               aria-current={isActive ? "page" : undefined}
               className={cn(
                 "relative flex min-w-0 items-center justify-center rounded-full px-4 py-2.5 text-sm font-semibold transition-colors sm:px-6",
@@ -61,7 +62,7 @@ export function NavBar({ items, className, cta }: NavBarProps) {
               )}
             >
               <span className="hidden md:inline">{item.name}</span>
-              <span className="md:hidden" aria-label={item.name}>
+              <span className="md:hidden" aria-hidden="true">
                 <Icon size={18} strokeWidth={2.25} />
               </span>
               {isActive ? (

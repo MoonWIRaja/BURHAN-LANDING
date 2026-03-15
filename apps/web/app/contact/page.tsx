@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import { ArrowUpRight, SquareTerminal } from "lucide-react"
 
 import { Button } from "@workspace/ui/components/button"
@@ -9,7 +10,16 @@ import {
   CardTitle,
 } from "@workspace/ui/components/card"
 import { SectionHeading } from "@/components/section-heading"
-import { consoleUrl, contactCards, deliverySteps } from "@/config/site"
+import { consoleUrl, contactCards, deliverySteps, discordUrl } from "@/config/site"
+
+export const metadata: Metadata = {
+  title: "Contact",
+  description:
+    "Contact BurHan Hosting through the console workflow and Discord to discuss custom game server builds.",
+  alternates: {
+    canonical: "/contact",
+  },
+}
 
 export default function ContactPage() {
   return (
@@ -46,6 +56,12 @@ export default function ContactPage() {
                 <a href={consoleUrl}>
                   Open Console
                   <SquareTerminal className="h-4 w-4" />
+                </a>
+              </Button>
+              <Button asChild variant="outline" size="lg" className="w-full justify-between">
+                <a href={discordUrl} target="_blank" rel="noreferrer">
+                  Join Discord
+                  <ArrowUpRight className="h-4 w-4" />
                 </a>
               </Button>
             </CardContent>

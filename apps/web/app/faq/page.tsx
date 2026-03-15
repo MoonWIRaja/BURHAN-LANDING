@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import {
   Accordion,
   AccordionContent,
@@ -6,6 +7,15 @@ import {
 } from "@workspace/ui/components/accordion"
 import { SectionHeading } from "@/components/section-heading"
 import { faqEntries } from "@/config/site"
+
+export const metadata: Metadata = {
+  title: "FAQ",
+  description:
+    "Frequently asked questions about BurHan Hosting, including ordering flow, migrations, backups, and supported games.",
+  alternates: {
+    canonical: "/faq",
+  },
+}
 
 export default function FaqPage() {
   return (

@@ -166,6 +166,7 @@ body::before {
 
 .story-bento-grid {
   display: grid;
+  grid-auto-flow: row dense;
   gap: 1rem;
 }
 

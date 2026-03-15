@@ -150,7 +150,7 @@ export function OurStoryBentoGrid() {
               </p>
             </BentoItem>
 
-            <BentoItem>
+            <BentoItem className="xl:col-start-4 xl:row-start-2">
               <StoryBadge>Local focus</StoryBadge>
               <h3 className="mt-3 text-xl font-semibold text-white">
                 Made for Malaysian players first.

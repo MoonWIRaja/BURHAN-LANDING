@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import { Cpu, LifeBuoy, ShieldCheck, SlidersHorizontal } from "lucide-react"
 
 import {
@@ -10,6 +11,15 @@ import {
 import { Button } from "@workspace/ui/components/button"
 import { SectionHeading } from "@/components/section-heading"
 import { consoleUrl, featureCategories } from "@/config/site"
+
+export const metadata: Metadata = {
+  title: "Features",
+  description:
+    "Explore BurHan Hosting performance, security, control panel, and support features built for real game-server operations.",
+  alternates: {
+    canonical: "/features",
+  },
+}
 
 const categoryIcons = {
   performance: Cpu,
