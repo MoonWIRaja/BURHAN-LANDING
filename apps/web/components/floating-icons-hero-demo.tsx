@@ -6,7 +6,6 @@ import {
   FloatingIconsHero,
   type FloatingIconsHeroProps,
 } from "@/components/ui/floating-icons-hero-section"
-import { consoleUrl } from "@/config/site"
 
 type AppIconOptions = {
   background?: string
@@ -81,8 +80,6 @@ export function FloatingIconsHeroDemo() {
     <FloatingIconsHero
       title="Custom game server hosting built for real operator workloads."
       subtitle="Launch Minecraft, FiveM, Project Zomboid, Rust with us... Let's get started!"
-      ctaText="Go to Console"
-      ctaHref={consoleUrl}
       icons={demoIcons}
     />
   )

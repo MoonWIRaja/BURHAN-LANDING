@@ -11,7 +11,7 @@ import { faqEntries } from "@/config/site"
 export const metadata: Metadata = {
   title: "FAQ",
   description:
-    "Frequently asked questions about BurHan Hosting, including ordering flow, migrations, backups, and supported games.",
+    "Frequently asked questions about the current BurHan website structure, live hosting flow, support routes, and upcoming service updates.",
   alternates: {
     canonical: "/faq",
   },
@@ -23,8 +23,8 @@ export default function FaqPage() {
       <section className="section-shell pt-28 sm:pt-32">
         <SectionHeading
           eyebrow="FAQ"
-          title="Questions the first release should answer clearly"
-          description="The FAQ keeps the message aligned with the current product shape: console-first ordering, custom-build hosting, migration support, and a multi-game position."
+          title="Questions about the current BurHan site and service flow"
+          description="This FAQ reflects the latest structure: corporate home on /, live hosting on /hosting, custom-plan routing, ticket support flow, and early-access updates for upcoming units."
         />
       </section>
 

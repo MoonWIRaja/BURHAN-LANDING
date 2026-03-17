@@ -1,3 +1,18 @@
 $ react-grab-codex && next dev --turbopack --hostname "127.0.0.1" --port "3000"
 ⚠ Fast Refresh had to perform a full reload due to a runtime error.
 ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+⚠ Fast Refresh had to perform a full reload due to a runtime error.
+⚠ Fast Refresh had to perform a full reload due to a runtime error.
+⨯ ReferenceError: Star is not defined
+    at <unknown> (app\hosting\page.tsx:124:26)
+    at Array.map (<anonymous>)
+    at HostingPage (app\hosting\page.tsx:119:38)
+  122 |                         className="rounded-md border border-emerald-300/25 bg-emerald-400/15 p-1.5 text-emerald-300"
+  123 |                       >
+> 124 |                         <Star className="h-3.5 w-3.5 fill-current" />
+      |                          ^
+  125 |                       </div>
+  126 |                     ))}
+  127 |                   </div> {
+  digest: '2886546189'
+}

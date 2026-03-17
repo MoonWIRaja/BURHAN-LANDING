@@ -17,6 +17,7 @@ export interface NavItem {
 interface NavBarProps {
   items: NavItem[]
   className?: string
+  activeItemName?: string
   cta?: {
     label: string
     url: string
@@ -32,9 +33,9 @@ function isActiveRoute(pathname: string, url: string) {
   return pathname === url || pathname.startsWith(`${url}/`)
 }
 
-export function NavBar({ items, className, cta }: NavBarProps) {
+export function NavBar({ items, className, activeItemName, cta }: NavBarProps) {
   const pathname = usePathname()
-  const activeTab = items.find((item) => isActiveRoute(pathname, item.url))?.name ?? items[0]?.name
+  const activeTab = activeItemName ?? items.find((item) => isActiveRoute(pathname, item.url))?.name
 
   return (
     <div

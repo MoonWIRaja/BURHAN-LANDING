@@ -1,9 +1,26 @@
-export type NavIconKey = "home" | "plan" | "features" | "faq" | "contact"
+export type NavIconKey = "home" | "services" | "faq" | "contact"
+
+export type BusinessUnitSlug = "hosting" | "cafe" | "web-development" | "game-development"
+
+export type BusinessUnitStatus = "live" | "coming_soon"
 
 export interface SiteNavItem {
   name: string
   url: string
   icon: NavIconKey
+}
+
+export interface BusinessUnit {
+  slug: BusinessUnitSlug
+  name: string
+  status: BusinessUnitStatus
+  oneLiner: string
+  description: string
+  launchWindow: string
+  primaryCta: {
+    label: string
+    href: string
+  }
 }
 
 export interface FeatureCategory {
@@ -19,6 +36,26 @@ export interface FeatureCategory {
 export interface FaqEntry {
   question: string
   answer: string
+}
+
+export interface SupportResourceLink {
+  title: string
+  description: string
+  href: string
+}
+
+export interface TeamMember {
+  name: string
+  role: string
+  unit: string
+  summary: string
+  initials: string
+}
+
+export interface SupportResourceGroup {
+  title: string
+  description: string
+  links: SupportResourceLink[]
 }
 
 export interface ServerBuildOption {
@@ -40,10 +77,64 @@ export const consoleUrl =
 export const discordUrl =
   process.env.NEXT_PUBLIC_DISCORD_URL ?? "https://discord.gg/qBZhBgYb"
 
+export const businessUnits: BusinessUnit[] = [
+  {
+    slug: "hosting",
+    name: "Game Hosting",
+    status: "live",
+    oneLiner: "Custom game-server infrastructure already operating for live communities.",
+    description:
+      "BurHan Hosting is active now with console-first ordering, custom build scoping, and operational workflows designed for serious multiplayer uptime.",
+    launchWindow: "Live now",
+    primaryCta: {
+      label: "Explore Hosting",
+      href: "/hosting",
+    },
+  },
+  {
+    slug: "cafe",
+    name: "Cafe",
+    status: "coming_soon",
+    oneLiner: "A physical community hub for gamers, creators, and founders.",
+    description:
+      "The cafe concept focuses on a high-energy social environment with quality food, events, and real-world community touchpoints for the BurHan ecosystem.",
+    launchWindow: "Target: 2026",
+    primaryCta: {
+      label: "Get Cafe Updates",
+      href: "/contact?service=cafe&sourcePage=/services/cafe",
+    },
+  },
+  {
+    slug: "web-development",
+    name: "Web and Design Development",
+    status: "coming_soon",
+    oneLiner: "Product websites and custom web platforms for business operators.",
+    description:
+      "This unit will deliver modern websites and practical web products for teams that need conversion-focused design and clean technical implementation.",
+    launchWindow: "Target: 2026",
+    primaryCta: {
+      label: "Join Web and Design Waitlist",
+      href: "/contact?service=web-development&sourcePage=/services/web-development",
+    },
+  },
+  {
+    slug: "game-development",
+    name: "Game Development",
+    status: "coming_soon",
+    oneLiner: "Original game projects and interactive experiences under the BurHan brand.",
+    description:
+      "The game-development arm is planned for new IP experiments, playable prototypes, and longer-term production initiatives aligned with the BurHan community.",
+    launchWindow: "Target: 2027",
+    primaryCta: {
+      label: "Get Game Dev Updates",
+      href: "/contact?service=game-development&sourcePage=/services/game-development",
+    },
+  },
+]
+
 export const siteNavigation: SiteNavItem[] = [
   { name: "Home", url: "/", icon: "home" },
-  { name: "Custom Plan", url: "/custom-plan", icon: "plan" },
-  { name: "Features", url: "/features", icon: "features" },
+  { name: "Services", url: "/services", icon: "services" },
   { name: "FAQ", url: "/faq", icon: "faq" },
   { name: "Contact", url: "/contact", icon: "contact" },
 ]
@@ -150,34 +241,133 @@ export const featureCategories: FeatureCategory[] = [
 
 export const faqEntries: FaqEntry[] = [
   {
-    question: "How do I order or manage billing?",
+    question: "What services are live right now?",
     answer:
-      "Orders and billing live inside the BurHan console. The landing page is intentionally conversion-focused and routes every serious action to the console login flow.",
+      "Game Hosting is live now. Cafe, Web and Design Development, and Game Development are currently listed as coming soon with launch-window messaging in the Services and Contact pages.",
+  },
+  {
+    question: "Where should I start if I need hosting today?",
+    answer:
+      "Start at /hosting, then use /custom-plan to choose the closest build profile. Operational actions like ordering and billing are routed to the BurHan console from hosting-specific pages.",
+  },
+  {
+    question: "Why are fixed hosting price tables not shown?",
+    answer:
+      "The current hosting flow is custom-build first. Instead of forcing every community into a single public tier, BurHan scopes builds based on game type, player pattern, and operational needs.",
+  },
+  {
+    question: "How do I contact support for technical or billing issues?",
+    answer:
+      "Use the Ticket Support page at /ticket-support for structured requests. You can submit issue category, priority, and details so the team can route your request faster.",
   },
   {
     question: "Can you help migrate an existing server?",
     answer:
-      "Yes. The first pass highlights migration requests as a supported workflow, and that request path will be routed through the console as the operational layer expands.",
+      "Yes. Migration is supported and should be submitted through /ticket-support so your request includes server context and can be routed correctly.",
   },
   {
-    question: "Do you support modded or custom game setups?",
+    question: "How do I get updates for upcoming services?",
     answer:
-      "That is the core positioning. BurHan Hosting is built around custom server builds rather than rigid public tiers, so the right fit depends on your game, player pattern, and plugin stack.",
+      "Use the Early Access Update Form on /contact. You can choose Cafe, Web and Design Development, or Game Development and submit your interest in one place.",
   },
   {
-    question: "What happens with backups?",
+    question: "Where can I learn about BurHan company direction and team?",
     answer:
-      "Backups are treated as part of the deployment shape, not a premium afterthought. The FAQ and feature sections both frame backups as a default operational capability.",
+      "Use /company-home for About Us, /team for operations ownership, and /features for product capability details.",
   },
   {
-    question: "Is DDoS protection included?",
+    question: "Is /services/hosting different from /hosting?",
     answer:
-      "The marketing copy positions mitigation as part of the infrastructure posture. Exact implementation details can be surfaced later once console workflows and technical docs are published.",
+      "No. /services/hosting redirects to /hosting so there is one canonical live hosting destination.",
+  },
+]
+
+export const supportResourceGroups: SupportResourceGroup[] = [
+  {
+    title: "Discover",
+    description: "Learn about the team, direction, and active service scope.",
+    links: [
+      {
+        title: "About Us",
+        description: "Learn who we are, why BurHan was built, and how we operate.",
+        href: "/company-home",
+      },
+      {
+        title: "Team",
+        description: "Meet the people behind BurHan operations and support.",
+        href: "/team",
+      },
+    ],
   },
   {
-    question: "Which games can I host?",
-    answer:
-      "The launch site is multi-game by default and highlights popular server categories such as Minecraft, Rust, FiveM, Palworld, ARK, Terraria, Valheim, and CS2.",
+    title: "Self Service",
+    description: "Use public resources before opening a request.",
+    links: [
+      {
+        title: "FAQ",
+        description: "Quick answers for billing, migrations, and operations.",
+        href: "/faq",
+      },
+      {
+        title: "Features",
+        description: "Product capabilities, support posture, and control flow.",
+        href: "/features",
+      },
+    ],
+  },
+  {
+    title: "Tickets & Live Chat",
+    description: "Choose a direct channel for account or infrastructure help.",
+    links: [
+      {
+        title: "Ticket Support",
+        description: "Submit your request through the dedicated BurHan ticket portal.",
+        href: "/ticket-support?source=support-hub",
+      },
+    ],
+  },
+  {
+    title: "Other",
+    description: "Additional support channels and roadmap communication.",
+    links: [
+      {
+        title: "Discord Server",
+        description: "Join for announcements and ongoing support updates.",
+        href: discordUrl,
+      },
+      {
+        title: "Early Access Updates",
+        description: "Register interest for cafe, web-dev, and game-dev launches.",
+        href: "#request-intake",
+      },
+    ],
+  },
+]
+
+export const teamMembers: TeamMember[] = [
+  {
+    name: "BurHan",
+    role: "Founder & Infrastructure Lead",
+    unit: "Leadership",
+    summary:
+      "Leads platform direction, deployment standards, and performance priorities across active hosting operations.",
+    initials: "BH",
+  },
+  {
+    name: "Ops Core",
+    role: "Server Reliability",
+    unit: "Operations",
+    summary:
+      "Focuses on provisioning stability, migration handoffs, and recovery readiness for production game communities.",
+    initials: "OP",
+  },
+  {
+    name: "Community Desk",
+    role: "Support & Intake",
+    unit: "Support",
+    summary:
+      "Handles support intake, roadmap updates, and customer routing between live services and upcoming launches.",
+    initials: "CD",
   },
 ]
 

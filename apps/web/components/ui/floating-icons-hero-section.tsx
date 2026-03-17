@@ -17,8 +17,8 @@ interface IconProps {
 export interface FloatingIconsHeroProps {
   title: string
   subtitle: string
-  ctaText: string
-  ctaHref: string
+  ctaText?: string
+  ctaHref?: string
   icons: IconProps[]
 }
 
@@ -446,15 +446,17 @@ const FloatingIconsHero = React.forwardRef<
               </div>
             </div>
           </motion.div>
-          <div className="mt-10 flex w-[46rem] max-w-full justify-center">
-            <span ref={ctaRef} className="inline-flex">
-              <InteractiveHoverButton
-                href={ctaHref}
-                text={ctaText}
-                className="h-14 w-[15.5rem] border-white/12 bg-black/55 px-4 text-sm font-semibold text-white shadow-[0_18px_50px_-30px_rgba(239,68,68,0.75)] backdrop-blur-xl"
-              />
-            </span>
-          </div>
+          {ctaText && ctaHref ? (
+            <div className="mt-10 flex w-[46rem] max-w-full justify-center">
+              <span ref={ctaRef} className="inline-flex">
+                <InteractiveHoverButton
+                  href={ctaHref}
+                  text={ctaText}
+                  className="h-14 w-[15.5rem] border-white/12 bg-black/55 px-4 text-sm font-semibold text-white shadow-[0_18px_50px_-30px_rgba(239,68,68,0.75)] backdrop-blur-xl"
+                />
+              </span>
+            </div>
+          ) : null}
         </div>
       </div>
     </section>

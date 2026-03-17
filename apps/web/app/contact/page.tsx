@@ -1,78 +1,134 @@
 import type { Metadata } from "next"
-import { ArrowUpRight, SquareTerminal } from "lucide-react"
+import { ArrowUpRight } from "lucide-react"
 
-import { Button } from "@workspace/ui/components/button"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@workspace/ui/components/card"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@workspace/ui/components/card"
+import { LeadInterestForm } from "@/components/lead-interest-form"
 import { SectionHeading } from "@/components/section-heading"
-import { consoleUrl, contactCards, deliverySteps, discordUrl } from "@/config/site"
+import { businessUnits, supportResourceGroups } from "@/config/site"
 
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Contact BurHan Hosting through the console workflow and Discord to discuss custom game server builds.",
+    "Contact BurHan for active hosting operations and submit early-access interest for upcoming services.",
   alternates: {
     canonical: "/contact",
   },
 }
 
-export default function ContactPage() {
+interface ContactPageProps {
+  searchParams: Promise<{
+    service?: string | string[]
+    sourcePage?: string | string[]
+    source?: string | string[]
+  }>
+}
+
+function normalizeSearchParam(value: string | string[] | undefined) {
+  if (!value) {
+    return undefined
+  }
+
+  return Array.isArray(value) ? value[0] : value
+}
+
+export default async function ContactPage({ searchParams }: ContactPageProps) {
+  const params = await searchParams
+  const initialService = normalizeSearchParam(params.service)
+  const sourcePage = normalizeSearchParam(params.sourcePage) ?? normalizeSearchParam(params.source)
+  const statusOrder = {
+    live: 0,
+    coming_soon: 1,
+  } as const
+
+  const prioritizedUnits = [...businessUnits].sort((a, b) => {
+    const byStatus = statusOrder[a.status] - statusOrder[b.status]
+
+    if (byStatus !== 0) {
+      return byStatus
+    }
+
+    return a.name.localeCompare(b.name)
+  })
+
   return (
     <div className="space-y-24">
       <section className="section-shell pt-28 sm:pt-32">
         <SectionHeading
           eyebrow="Contact"
-          title="The first release treats the console as the operational front door"
-          description="Support channels are intentionally kept minimal for now. The site explains the flow and keeps the main action obvious: go to the console for ordering, billing, and future request paths."
+          title="One place for hosting support and expansion interest"
+          description="Hosting is live now, and upcoming services use a single early-access flow. Share your interest and we will route your request to the right track."
         />
+        <div className="mt-12 grid gap-5 md:grid-cols-2">
+          {supportResourceGroups.map((group) => (
+            <Card key={group.title} className="glass-panel">
+              <CardHeader>
+                <CardTitle className="text-white">{group.title}</CardTitle>
+                <CardDescription>{group.description}</CardDescription>
+              </CardHeader>
+              {group.links.length > 0 ? (
+                <CardContent className="space-y-3">
+                  {group.links.map((link) => {
+                    const isExternal = link.href.startsWith("http")
+
+                    return (
+                      <a
+                        key={link.title}
+                        href={link.href}
+                        target={isExternal ? "_blank" : undefined}
+                        rel={isExternal ? "noreferrer" : undefined}
+                        className="group block rounded-xl border border-white/12 bg-black/35 p-4 transition hover:border-primary/40 hover:bg-black/45"
+                      >
+                        <div className="flex items-start justify-between gap-4">
+                          <div className="space-y-1.5">
+                            <p className="text-sm font-semibold text-white">{link.title}</p>
+                            <p className="text-sm text-muted-foreground">{link.description}</p>
+                          </div>
+                          <ArrowUpRight className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground transition group-hover:text-primary" />
+                        </div>
+                      </a>
+                    )
+                  })}
+                </CardContent>
+              ) : null}
+            </Card>
+          ))}
+        </div>
       </section>
 
-      <section className="section-shell">
-        <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
-          <Card className="glass-panel">
-            <CardHeader>
-              <CardTitle className="text-white">Primary contact surface</CardTitle>
-              <CardDescription>
-                BurHan Hosting wants serious actions to start from the correct product surface.
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-5">
-              <div className="rounded-[1.35rem] border border-primary/18 bg-primary/8 p-5">
-                <p className="text-sm uppercase tracking-[0.18em] text-primary">Main CTA</p>
-                <h3 className="mt-3 font-[family-name:var(--font-heading)] text-2xl font-semibold text-white">
-                  Go to Console
-                </h3>
-                <p className="mt-3 max-w-xl text-sm leading-7 text-muted-foreground">
-                  Orders, billing, and future support flows are anchored there, so the marketing
-                  site does not turn into a partial billing product.
-                </p>
-              </div>
-              <Button asChild size="lg" className="w-full justify-between">
-                <a href={consoleUrl}>
-                  Open Console
-                  <SquareTerminal className="h-4 w-4" />
-                </a>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="w-full justify-between">
-                <a href={discordUrl} target="_blank" rel="noreferrer">
-                  Join Discord
-                  <ArrowUpRight className="h-4 w-4" />
-                </a>
-              </Button>
-            </CardContent>
-          </Card>
+      <section id="request-intake" className="section-shell">
+        <SectionHeading
+          eyebrow="Request Intake"
+          title="Submit interest and track service status in one place"
+          description="Use the early-access form for upcoming services, then refer to the cards on the right for live status and launch windows."
+        />
+        <div className="mt-12 grid items-start gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+          <div className="grid gap-5 self-start">
+            <Card className="glass-panel">
+              <CardHeader>
+                <CardTitle className="text-white">Early Access Update Form</CardTitle>
+                <CardDescription>
+                  Use this form for cafe, web and design development, and game-development updates.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-5">
+                <LeadInterestForm initialService={initialService} sourcePage={sourcePage} />
+              </CardContent>
+            </Card>
+          </div>
+
           <div className="grid gap-5">
-            {contactCards.map((card) => (
-              <Card key={card.title} className="glass-panel">
+            {prioritizedUnits.map((unit) => (
+              <Card key={unit.slug} className="glass-panel">
                 <CardHeader>
-                  <p className="text-sm uppercase tracking-[0.18em] text-primary">{card.status}</p>
-                  <CardTitle className="text-white">{card.title}</CardTitle>
-                  <CardDescription>{card.description}</CardDescription>
+                  <p
+                    className={`text-sm uppercase tracking-[0.18em] ${
+                      unit.status === "live" ? "text-emerald-300" : "text-primary"
+                    }`}
+                  >
+                    {unit.status === "live" ? "Live now" : unit.launchWindow}
+                  </p>
+                  <CardTitle className="text-white">{unit.name}</CardTitle>
+                  <CardDescription>{unit.oneLiner}</CardDescription>
                 </CardHeader>
               </Card>
             ))}
@@ -80,31 +136,6 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="section-shell section-border pt-24">
-        <SectionHeading
-          eyebrow="How Requests Flow"
-          title="Operational paths are already shaped, even before every channel is public"
-          description="This keeps the first launch coherent: the site establishes trust, then hands users into the console instead of scattering them across disconnected support surfaces."
-        />
-        <div className="mt-12 grid gap-5 md:grid-cols-3">
-          {deliverySteps.map((step) => (
-            <Card key={step.title} className="glass-panel">
-              <CardHeader>
-                <CardTitle className="text-white">{step.title}</CardTitle>
-                <CardDescription>{step.body}</CardDescription>
-              </CardHeader>
-            </Card>
-          ))}
-        </div>
-        <div className="mt-10">
-          <Button asChild variant="outline" size="lg">
-            <a href={consoleUrl}>
-              Console entry point
-              <ArrowUpRight className="h-4 w-4" />
-            </a>
-          </Button>
-        </div>
-      </section>
     </div>
   )
 }

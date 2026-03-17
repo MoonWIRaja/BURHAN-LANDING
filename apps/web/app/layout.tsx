@@ -18,7 +18,7 @@ const fontHeading = Space_Grotesk({
 })
 
 const siteDescription =
-  "Premium multi-game server hosting with custom builds, console-first operations, and launch-ready infrastructure."
+  "BurHan corporate hub with live hosting operations and upcoming expansion into cafe, web development, and game development."
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react"
 import { motion, useReducedMotion } from "framer-motion"
-import { ArrowRight, CheckCircle2, Sparkles, SquareTerminal } from "lucide-react"
+import { CheckCircle2, Sparkles, SquareTerminal } from "lucide-react"
 
 import { Badge } from "@workspace/ui/components/badge"
 import { Button } from "@workspace/ui/components/button"
@@ -214,12 +214,6 @@ export function ServerBuildSelector() {
                 <a href={consoleUrl}>
                   Go to Console
                   <SquareTerminal className="h-4 w-4" />
-                </a>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="mt-3 w-full justify-between">
-                <a href="#build-process">
-                  See deployment flow
-                  <ArrowRight className="h-4 w-4" />
                 </a>
               </Button>
             </div>

@@ -3,9 +3,9 @@
 import React from "react"
 import type { ComponentProps, ReactNode } from "react"
 import { motion, useReducedMotion } from "motion/react"
-import { FrameIcon, MessageCircle } from "lucide-react"
+import { FrameIcon } from "lucide-react"
 
-import { brandName, consoleUrl, discordUrl } from "@/config/site"
+import { brandName, discordUrl } from "@/config/site"
 
 interface FooterLink {
   title: string
@@ -18,38 +18,44 @@ interface FooterGroup {
   links: FooterLink[]
 }
 
+function DiscordIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+      <path d="M20.317 4.369A19.736 19.736 0 0 0 15.885 3a13.34 13.34 0 0 0-.599 1.234 18.223 18.223 0 0 0-5.573 0A13.32 13.32 0 0 0 9.106 3a19.741 19.741 0 0 0-4.438 1.372C1.857 8.569 1.096 12.662 1.477 16.7a19.902 19.902 0 0 0 6.101 3.088 15.136 15.136 0 0 0 1.31-2.11 12.748 12.748 0 0 1-2.063-.993c.173-.127.343-.26.507-.398a14.266 14.266 0 0 0 12.166 0c.165.138.335.27.507.398a12.812 12.812 0 0 1-2.063.993 15.146 15.146 0 0 0 1.31 2.11 19.874 19.874 0 0 0 6.102-3.089c.456-4.684-.78-8.74-3.198-12.329ZM8.02 14.121c-1.183 0-2.157-1.085-2.157-2.418 0-1.334.955-2.418 2.157-2.418 1.21 0 2.176 1.094 2.157 2.418 0 1.333-.946 2.418-2.157 2.418Zm7.974 0c-1.183 0-2.157-1.085-2.157-2.418 0-1.334.955-2.418 2.157-2.418 1.21 0 2.176 1.094 2.157 2.418 0 1.333-.946 2.418-2.157 2.418Z" />
+    </svg>
+  )
+}
+
 const footerLinks: FooterGroup[] = [
   {
-    label: "Product",
+    label: "Company",
     links: [
       { title: "Home", href: "/" },
-      { title: "Custom Plan", href: "/custom-plan" },
+      { title: "Services", href: "/services" },
       { title: "FAQ", href: "/faq" },
       { title: "Contact", href: "/contact" },
     ],
   },
   {
-    label: "Company",
+    label: "Product",
     links: [
-      { title: "Our Story", href: "/" },
-      { title: "Trust Promise", href: "/faq" },
-      { title: "Service FAQ", href: "/faq" },
-      { title: "Contact Team", href: "/contact" },
+      { title: "Hosting", href: "/hosting" },
+      { title: "Cafe", href: "/services/cafe" },
+      { title: "Web and Design Development", href: "/services/web-development" },
+      { title: "Game Development", href: "/services/game-development" },
     ],
   },
   {
     label: "Resources",
     links: [
-      { title: "Go to Console", href: consoleUrl },
-      { title: "Custom Plan", href: "/custom-plan" },
-      { title: "Hosting FAQ", href: "/faq" },
+      { title: "Service FAQ", href: "/faq" },
       { title: "Support", href: "/contact" },
     ],
   },
   {
     label: "Social Links",
     links: [
-      { title: "Discord", href: discordUrl, icon: MessageCircle },
+      { title: "Discord", href: discordUrl, icon: DiscordIcon },
     ],
   },
 ]

@@ -8,9 +8,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@workspace/ui/components/card"
-import { Button } from "@workspace/ui/components/button"
 import { SectionHeading } from "@/components/section-heading"
-import { consoleUrl, featureCategories } from "@/config/site"
+import { featureCategories } from "@/config/site"
 
 export const metadata: Metadata = {
   title: "Features",
@@ -75,29 +74,6 @@ export default function FeaturesPage() {
               </Card>
             )
           })}
-        </div>
-      </section>
-
-      <section className="section-shell">
-        <div className="glass-panel rounded-[1.8rem] p-8 sm:p-10">
-          <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-            <div className="max-w-2xl space-y-4">
-              <p className="text-sm font-medium tracking-[0.22em] text-primary uppercase">
-                Console-first flow
-              </p>
-              <h2 className="font-[family-name:var(--font-heading)] text-4xl font-semibold text-white">
-                The marketing experience stays concise because the operational work moves to the
-                console.
-              </h2>
-              <p className="text-base leading-8 text-muted-foreground">
-                That separation keeps this site sharp while leaving room for billing, provisioning,
-                and technical workflows to evolve in the proper product surface.
-              </p>
-            </div>
-            <Button asChild size="lg">
-              <a href={consoleUrl}>Go to Console</a>
-            </Button>
-          </div>
         </div>
       </section>
     </div>
