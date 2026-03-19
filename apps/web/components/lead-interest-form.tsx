@@ -152,8 +152,8 @@ export function LeadInterestForm({ initialService, sourcePage = "/contact" }: Le
   }
 
   function fieldClass(hasError?: string) {
-    return `w-full rounded-[1.1rem] border bg-[linear-gradient(180deg,rgba(12,12,16,0.92),rgba(6,6,10,0.88))] px-4 py-3 text-sm text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] outline-none transition placeholder:text-muted-foreground/75 focus:ring-2 focus:ring-primary/60 ${
-      hasError ? "border-red-400/60" : "border-white/20"
+    return `marketing-form-field ${
+      hasError ? "!border-red-400/60" : ""
     }`
   }
 
@@ -177,7 +177,7 @@ export function LeadInterestForm({ initialService, sourcePage = "/contact" }: Le
           placeholder="Your full name"
           autoComplete="name"
         />
-        {errors.name ? <p className="mt-2 text-xs text-red-300">{errors.name}</p> : null}
+        {errors.name ? <p className="mt-2 text-xs text-red-500">{errors.name}</p> : null}
       </div>
 
       <div>
@@ -199,7 +199,7 @@ export function LeadInterestForm({ initialService, sourcePage = "/contact" }: Le
           placeholder="you@company.com"
           autoComplete="email"
         />
-        {errors.email ? <p className="mt-2 text-xs text-red-300">{errors.email}</p> : null}
+        {errors.email ? <p className="mt-2 text-xs text-red-500">{errors.email}</p> : null}
       </div>
 
       <div>
@@ -221,7 +221,7 @@ export function LeadInterestForm({ initialService, sourcePage = "/contact" }: Le
             />
           </button>
           {isServiceMenuOpen ? (
-            <div className="absolute z-20 mt-2 w-full overflow-hidden rounded-[1rem] border border-white/15 bg-[linear-gradient(180deg,rgba(8,8,12,0.96),rgba(4,4,8,0.96))] shadow-[0_20px_60px_-35px_rgba(6,182,212,0.6)] backdrop-blur-xl">
+            <div className="absolute z-20 mt-2 w-full overflow-hidden rounded-[1rem] border border-border bg-popover shadow-[0_20px_60px_-35px_rgba(0,0,0,0.28)] backdrop-blur-xl">
               {upcomingServices.map((unit) => {
                 const isSelected = unit.slug === payload.service
 
@@ -240,8 +240,8 @@ export function LeadInterestForm({ initialService, sourcePage = "/contact" }: Le
                     aria-selected={isSelected}
                     className={`w-full px-4 py-3 text-left text-sm transition ${
                       isSelected
-                        ? "bg-primary/20 text-white"
-                        : "text-white/90 hover:bg-white/6 hover:text-white"
+                        ? "bg-primary/12 text-foreground"
+                        : "text-foreground/90 hover:bg-muted hover:text-foreground"
                     }`}
                   >
                     {unit.name}
@@ -252,7 +252,7 @@ export function LeadInterestForm({ initialService, sourcePage = "/contact" }: Le
           ) : null}
           <input type="hidden" name="service" value={payload.service} />
         </div>
-        {errors.service ? <p className="mt-2 text-xs text-red-300">{errors.service}</p> : null}
+        {errors.service ? <p className="mt-2 text-xs text-red-500">{errors.service}</p> : null}
       </div>
 
       <div>
@@ -272,7 +272,7 @@ export function LeadInterestForm({ initialService, sourcePage = "/contact" }: Le
           className={`${fieldClass(errors.message)} min-h-32 resize-y leading-7`}
           placeholder="Tell us what you are planning."
         />
-        {errors.message ? <p className="mt-2 text-xs text-red-300">{errors.message}</p> : null}
+        {errors.message ? <p className="mt-2 text-xs text-red-500">{errors.message}</p> : null}
       </div>
 
       <input type="hidden" name="sourcePage" value={payload.sourcePage} />
@@ -292,7 +292,7 @@ export function LeadInterestForm({ initialService, sourcePage = "/contact" }: Le
       </Button>
 
       {submitState === "success" ? (
-        <div className="rounded-xl border border-emerald-300/35 bg-emerald-500/12 px-4 py-3 text-sm text-emerald-100">
+        <div className="rounded-xl border border-emerald-300/35 bg-emerald-500/12 px-4 py-3 text-sm text-emerald-700 dark:text-emerald-100">
           <div className="flex items-center gap-2">
             <CheckCircle2 className="h-4 w-4" />
             <span>{submitMessage}</span>
@@ -301,7 +301,7 @@ export function LeadInterestForm({ initialService, sourcePage = "/contact" }: Le
       ) : null}
 
       {submitState === "error" && submitMessage ? (
-        <div className="rounded-xl border border-red-300/35 bg-red-500/12 px-4 py-3 text-sm text-red-100">
+        <div className="rounded-xl border border-red-300/35 bg-red-500/12 px-4 py-3 text-sm text-red-700 dark:text-red-100">
           {submitMessage}
         </div>
       ) : null}

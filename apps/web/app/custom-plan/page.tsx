@@ -44,7 +44,7 @@ export default function CustomPlanPage() {
             <Card key={step.title} className="glass-panel">
               <CardHeader>
                 <p className="text-sm uppercase tracking-[0.18em] text-primary">Step {index + 1}</p>
-                <CardTitle className="text-white">{step.title}</CardTitle>
+                <CardTitle className="text-foreground">{step.title}</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-sm leading-7 text-muted-foreground">{step.body}</p>

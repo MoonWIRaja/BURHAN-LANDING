@@ -62,7 +62,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
           {supportResourceGroups.map((group) => (
             <Card key={group.title} className="glass-panel">
               <CardHeader>
-                <CardTitle className="text-white">{group.title}</CardTitle>
+                <CardTitle className="text-foreground">{group.title}</CardTitle>
                 <CardDescription>{group.description}</CardDescription>
               </CardHeader>
               {group.links.length > 0 ? (
@@ -76,11 +76,11 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
                         href={link.href}
                         target={isExternal ? "_blank" : undefined}
                         rel={isExternal ? "noreferrer" : undefined}
-                        className="group block rounded-xl border border-white/12 bg-black/35 p-4 transition hover:border-primary/40 hover:bg-black/45"
+                        className="group block rounded-xl border border-border bg-background/70 p-4 transition hover:border-primary/40 hover:bg-background"
                       >
                         <div className="flex items-start justify-between gap-4">
                           <div className="space-y-1.5">
-                            <p className="text-sm font-semibold text-white">{link.title}</p>
+                            <p className="text-sm font-semibold text-foreground">{link.title}</p>
                             <p className="text-sm text-muted-foreground">{link.description}</p>
                           </div>
                           <ArrowUpRight className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground transition group-hover:text-primary" />
@@ -105,7 +105,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
           <div className="grid gap-5 self-start">
             <Card className="glass-panel">
               <CardHeader>
-                <CardTitle className="text-white">Early Access Update Form</CardTitle>
+                <CardTitle className="text-foreground">Early Access Update Form</CardTitle>
                 <CardDescription>
                   Use this form for cafe, web and design development, and game-development updates.
                 </CardDescription>
@@ -122,12 +122,12 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
                 <CardHeader>
                   <p
                     className={`text-sm uppercase tracking-[0.18em] ${
-                      unit.status === "live" ? "text-emerald-300" : "text-primary"
+                      unit.status === "live" ? "text-emerald-600 dark:text-emerald-300" : "text-primary"
                     }`}
                   >
                     {unit.status === "live" ? "Live now" : unit.launchWindow}
                   </p>
-                  <CardTitle className="text-white">{unit.name}</CardTitle>
+                  <CardTitle className="text-foreground">{unit.name}</CardTitle>
                   <CardDescription>{unit.oneLiner}</CardDescription>
                 </CardHeader>
               </Card>

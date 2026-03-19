@@ -34,7 +34,7 @@ export default function TeamPage() {
         <Card className="glass-panel">
           <CardHeader>
             <p className="text-xs tracking-[0.18em] text-primary uppercase">Team BurHan</p>
-            <CardTitle className="text-white">Operations and support ownership map</CardTitle>
+            <CardTitle className="text-foreground">Operations and support ownership map</CardTitle>
             <CardDescription>
               Each member card shows who is accountable for platform direction, reliability, and
               customer intake.
@@ -45,7 +45,7 @@ export default function TeamPage() {
               {teamMembers.map((member) => (
                 <div
                   key={member.name}
-                  className="rounded-2xl border border-white/12 bg-black/35 p-5"
+                  className="rounded-2xl border border-border bg-background/70 p-5"
                 >
                   <div className="flex items-start gap-3">
                     <div className="relative flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-primary/35 bg-primary/10">
@@ -55,7 +55,7 @@ export default function TeamPage() {
                       </span>
                     </div>
                     <div>
-                      <p className="text-base font-semibold text-white">{member.name}</p>
+                      <p className="text-base font-semibold text-foreground">{member.name}</p>
                       <p className="text-[0.68rem] tracking-[0.18em] text-primary uppercase">
                         {member.unit}
                       </p>

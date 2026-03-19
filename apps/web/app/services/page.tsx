@@ -21,7 +21,7 @@ export default function ServicesPage() {
     <div className="space-y-20">
       <section className="section-shell pt-28 sm:pt-32">
         <Badge variant="outline">Services</Badge>
-        <h1 className="mt-4 max-w-3xl font-[family-name:var(--font-heading)] text-4xl font-semibold text-white sm:text-5xl">
+        <h1 className="mt-4 max-w-3xl font-[family-name:var(--font-heading)] text-4xl font-semibold text-foreground sm:text-5xl">
           One company, multiple service tracks.
         </h1>
         <p className="mt-4 max-w-3xl text-base leading-8 text-muted-foreground">
@@ -36,12 +36,12 @@ export default function ServicesPage() {
             <Card key={unit.slug} className="glass-panel flex h-full flex-col">
               <CardHeader className="min-h-[9.5rem] space-y-3">
                 <div className="flex items-center justify-between gap-3">
-                  <CardTitle className="min-h-[3.5rem] text-white">{unit.name}</CardTitle>
+                  <CardTitle className="min-h-[3.5rem] text-foreground">{unit.name}</CardTitle>
                   <span
                     className={`rounded-full border px-3 py-1 text-[0.68rem] font-medium tracking-[0.16em] uppercase ${
                       unit.status === "live"
-                        ? "border-emerald-300/35 bg-emerald-500/12 text-emerald-200"
-                        : "border-amber-300/35 bg-amber-500/12 text-amber-100"
+                        ? "border-emerald-300/35 bg-emerald-500/12 text-emerald-700 dark:text-emerald-200"
+                        : "border-amber-300/35 bg-amber-500/12 text-amber-700 dark:text-amber-100"
                     }`}
                   >
                     {unit.status === "live" ? "Live" : "Coming Soon"}

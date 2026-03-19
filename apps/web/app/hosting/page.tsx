@@ -121,7 +121,7 @@ export default function HostingPage() {
         <div className="grid gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
           <div className="space-y-6">
             <Badge variant="outline">Custom Plan</Badge>
-            <h2 className="max-w-xl font-[family-name:var(--font-heading)] text-4xl font-semibold text-white">
+            <h2 className="max-w-xl font-[family-name:var(--font-heading)] text-4xl font-semibold text-foreground">
               Public pricing cards are out. Custom server framing is in.
             </h2>
             <p className="max-w-xl text-base leading-8 text-muted-foreground">
@@ -143,7 +143,7 @@ export default function HostingPage() {
                   className="rounded-2xl border border-border/60 bg-background/45 px-4 py-4"
                 >
                   <div className="flex items-center justify-between gap-3">
-                    <p className="font-semibold text-white">{option.label}</p>
+                    <p className="font-semibold text-foreground">{option.label}</p>
                     <span className="text-xs uppercase tracking-[0.16em] text-muted-foreground">
                       Custom fit
                     </span>
@@ -163,7 +163,7 @@ export default function HostingPage() {
 
           <div className="grid gap-10 xl:grid-cols-[0.34fr_0.66fr] xl:items-start">
             <div className="space-y-6">
-              <h2 className="font-[family-name:var(--font-heading)] text-4xl font-semibold text-white">
+              <h2 className="font-[family-name:var(--font-heading)] text-4xl font-semibold text-foreground">
                 What our players say
               </h2>
               <p className="text-base leading-8 text-muted-foreground">
@@ -172,15 +172,15 @@ export default function HostingPage() {
               </p>
 
               <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-1">
-                <div className="rounded-2xl border border-white/12 bg-black/35 px-4 py-4">
-                  <p className="text-4xl font-semibold text-white">7,500+</p>
+                <div className="rounded-2xl border border-border bg-background/70 px-4 py-4">
+                  <p className="text-4xl font-semibold text-foreground">7,500+</p>
                   <p className="mt-1 text-sm text-muted-foreground">
                     players have rated our servers and support
                   </p>
                 </div>
-                <div className="rounded-2xl border border-white/12 bg-black/35 px-4 py-4">
+                <div className="rounded-2xl border border-border bg-background/70 px-4 py-4">
                   <p className="text-sm tracking-[0.16em] text-primary uppercase">We&apos;re rated</p>
-                  <p className="mt-1 text-3xl font-semibold text-white">Excellent</p>
+                  <p className="mt-1 text-3xl font-semibold text-foreground">Excellent</p>
                   <div className="mt-3 flex gap-1.5">
                     {[0, 1, 2, 3, 4].map((star) => (
                       <div
@@ -206,7 +206,7 @@ export default function HostingPage() {
           <div className="pointer-events-none absolute -right-16 bottom-0 h-48 w-48 rounded-full bg-lime-500/12 blur-3xl" />
 
           <div className="space-y-3">
-            <h2 className="font-[family-name:var(--font-heading)] text-4xl font-semibold text-white">
+              <h2 className="font-[family-name:var(--font-heading)] text-4xl font-semibold text-foreground">
               Need help?
             </h2>
             <p className="max-w-3xl text-base leading-8 text-muted-foreground">
@@ -225,7 +225,7 @@ export default function HostingPage() {
                   href={channel.href}
                   target={isExternal ? "_blank" : undefined}
                   rel={isExternal ? "noreferrer" : undefined}
-                  className="group rounded-2xl border border-white/12 bg-black/40 p-5 transition hover:border-primary/45 hover:bg-black/55"
+                  className="group rounded-2xl border border-border bg-background/70 p-5 transition hover:border-primary/45 hover:bg-background"
                 >
                   <div className="flex items-start gap-3">
                     <div
@@ -234,7 +234,7 @@ export default function HostingPage() {
                       <HelpIcon channel={channel.icon} />
                     </div>
                     <div className="space-y-2">
-                      <h3 className="text-2xl font-semibold text-white">{channel.title}</h3>
+                      <h3 className="text-2xl font-semibold text-foreground">{channel.title}</h3>
                       <p className="text-sm leading-7 text-muted-foreground">{channel.description}</p>
                     </div>
                   </div>

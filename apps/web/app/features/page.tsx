@@ -51,7 +51,7 @@ export default function FeaturesPage() {
                     <p className="text-sm uppercase tracking-[0.18em] text-primary">
                       {category.eyebrow}
                     </p>
-                    <CardTitle className="mt-3 text-white">{category.title}</CardTitle>
+                    <CardTitle className="mt-3 text-foreground">{category.title}</CardTitle>
                   </div>
                   <CardDescription>{category.description}</CardDescription>
                 </CardHeader>
@@ -67,7 +67,7 @@ export default function FeaturesPage() {
                       {bullet}
                     </div>
                   ))}
-                  <div className="rounded-2xl border border-amber-400/18 bg-amber-400/8 px-4 py-3 text-sm text-amber-100">
+                  <div className="rounded-2xl border border-amber-400/18 bg-amber-400/8 px-4 py-3 text-sm text-amber-700 dark:text-amber-100">
                     {category.accent}
                   </div>
                 </CardContent>

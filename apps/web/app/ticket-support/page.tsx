@@ -54,7 +54,7 @@ export default async function TicketSupportPage({ searchParams }: TicketSupportP
         <div className="grid items-start gap-6 lg:grid-cols-[1.05fr_0.95fr]">
           <Card className="glass-panel">
             <CardHeader>
-              <CardTitle className="text-white">Support Ticket Form</CardTitle>
+              <CardTitle className="text-foreground">Support Ticket Form</CardTitle>
               <CardDescription>
                 Share issue type, priority, and complete details. The team will review and route
                 your ticket to the correct operations track.
@@ -72,7 +72,7 @@ export default async function TicketSupportPage({ searchParams }: TicketSupportP
                   <Clock4 className="h-4 w-4" />
                   <p className="text-xs tracking-[0.18em] uppercase">Response SLA</p>
                 </div>
-                <CardTitle className="text-white">Typical first response</CardTitle>
+                <CardTitle className="text-foreground">Typical first response</CardTitle>
                 <CardDescription>
                   Most tickets receive an initial reply within 24 hours. Urgent production issues
                   are prioritized first.
@@ -86,7 +86,7 @@ export default async function TicketSupportPage({ searchParams }: TicketSupportP
                   <CircleAlert className="h-4 w-4" />
                   <p className="text-xs tracking-[0.18em] uppercase">Before Submit</p>
                 </div>
-                <CardTitle className="text-white">Include key context</CardTitle>
+                <CardTitle className="text-foreground">Include key context</CardTitle>
                 <CardDescription>
                   Add server type, game, timestamp, and error logs where possible. Better context
                   means faster troubleshooting.
@@ -100,7 +100,7 @@ export default async function TicketSupportPage({ searchParams }: TicketSupportP
                   <ShieldCheck className="h-4 w-4" />
                   <p className="text-xs tracking-[0.18em] uppercase">Data Handling</p>
                 </div>
-                <CardTitle className="text-white">Your details stay scoped</CardTitle>
+                <CardTitle className="text-foreground">Your details stay scoped</CardTitle>
                 <CardDescription>
                   Ticket information is used only for support resolution and service operations.
                 </CardDescription>
@@ -109,7 +109,7 @@ export default async function TicketSupportPage({ searchParams }: TicketSupportP
 
             <Card className="glass-panel">
               <CardHeader>
-                <CardTitle className="text-white">Discord Support</CardTitle>
+                <CardTitle className="text-foreground">Discord Support</CardTitle>
                 <CardDescription>
                   For more inquiries you can go to our discord for more direction and support from
                   our friendly staff.

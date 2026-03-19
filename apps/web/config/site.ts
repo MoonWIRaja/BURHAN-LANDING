@@ -70,7 +70,7 @@ export interface ServerBuildOption {
   highlights: string[]
 }
 
-export const brandName = "BurHan Hosting"
+export const brandName = "BURHANDEV"
 export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://burhan.my"
 export const consoleUrl =
   process.env.NEXT_PUBLIC_CONSOLE_URL ?? "https://console.burhan.my"

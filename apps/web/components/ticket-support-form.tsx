@@ -137,8 +137,8 @@ export function TicketSupportForm({ sourcePage = "/ticket-support" }: TicketSupp
   }
 
   function fieldClass(hasError?: string) {
-    return `w-full rounded-[1.1rem] border bg-[linear-gradient(180deg,rgba(12,12,16,0.92),rgba(6,6,10,0.88))] px-4 py-3 text-sm text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] outline-none transition placeholder:text-muted-foreground/75 focus:ring-2 focus:ring-primary/60 ${
-      hasError ? "border-red-400/60" : "border-white/20"
+    return `marketing-form-field ${
+      hasError ? "!border-red-400/60" : ""
     }`
   }
 
@@ -162,7 +162,7 @@ export function TicketSupportForm({ sourcePage = "/ticket-support" }: TicketSupp
           placeholder="Your full name"
           autoComplete="name"
         />
-        {errors.name ? <p className="mt-2 text-xs text-red-300">{errors.name}</p> : null}
+        {errors.name ? <p className="mt-2 text-xs text-red-500">{errors.name}</p> : null}
       </div>
 
       <div>
@@ -184,7 +184,7 @@ export function TicketSupportForm({ sourcePage = "/ticket-support" }: TicketSupp
           placeholder="you@company.com"
           autoComplete="email"
         />
-        {errors.email ? <p className="mt-2 text-xs text-red-300">{errors.email}</p> : null}
+        {errors.email ? <p className="mt-2 text-xs text-red-500">{errors.email}</p> : null}
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2">
@@ -205,12 +205,12 @@ export function TicketSupportForm({ sourcePage = "/ticket-support" }: TicketSupp
             className={fieldClass(errors.category)}
           >
             {categories.map((category) => (
-              <option key={category.value} value={category.value} className="bg-black text-white">
+              <option key={category.value} value={category.value} className="bg-background text-foreground">
                 {category.label}
               </option>
             ))}
           </select>
-          {errors.category ? <p className="mt-2 text-xs text-red-300">{errors.category}</p> : null}
+          {errors.category ? <p className="mt-2 text-xs text-red-500">{errors.category}</p> : null}
         </div>
 
         <div>
@@ -230,12 +230,12 @@ export function TicketSupportForm({ sourcePage = "/ticket-support" }: TicketSupp
             className={fieldClass(errors.priority)}
           >
             {priorities.map((priority) => (
-              <option key={priority.value} value={priority.value} className="bg-black text-white">
+              <option key={priority.value} value={priority.value} className="bg-background text-foreground">
                 {priority.label}
               </option>
             ))}
           </select>
-          {errors.priority ? <p className="mt-2 text-xs text-red-300">{errors.priority}</p> : null}
+          {errors.priority ? <p className="mt-2 text-xs text-red-500">{errors.priority}</p> : null}
         </div>
       </div>
 
@@ -256,7 +256,7 @@ export function TicketSupportForm({ sourcePage = "/ticket-support" }: TicketSupp
           className={fieldClass(errors.subject)}
           placeholder="Short summary of the issue"
         />
-        {errors.subject ? <p className="mt-2 text-xs text-red-300">{errors.subject}</p> : null}
+        {errors.subject ? <p className="mt-2 text-xs text-red-500">{errors.subject}</p> : null}
       </div>
 
       <div>
@@ -276,7 +276,7 @@ export function TicketSupportForm({ sourcePage = "/ticket-support" }: TicketSupp
           className={`${fieldClass(errors.message)} min-h-36 resize-y leading-7`}
           placeholder="Explain what happened, what game/server was affected, and any error details."
         />
-        {errors.message ? <p className="mt-2 text-xs text-red-300">{errors.message}</p> : null}
+        {errors.message ? <p className="mt-2 text-xs text-red-500">{errors.message}</p> : null}
       </div>
 
       <input type="hidden" name="sourcePage" value={payload.sourcePage} />
@@ -296,7 +296,7 @@ export function TicketSupportForm({ sourcePage = "/ticket-support" }: TicketSupp
       </Button>
 
       {submitState === "success" ? (
-        <div className="rounded-xl border border-emerald-300/35 bg-emerald-500/12 px-4 py-3 text-sm text-emerald-100">
+        <div className="rounded-xl border border-emerald-300/35 bg-emerald-500/12 px-4 py-3 text-sm text-emerald-700 dark:text-emerald-100">
           <div className="flex items-center gap-2">
             <CheckCircle2 className="h-4 w-4" />
             <span>{submitMessage}</span>
@@ -305,7 +305,7 @@ export function TicketSupportForm({ sourcePage = "/ticket-support" }: TicketSupp
       ) : null}
 
       {submitState === "error" && submitMessage ? (
-        <div className="rounded-xl border border-red-300/35 bg-red-500/12 px-4 py-3 text-sm text-red-100">
+        <div className="rounded-xl border border-red-300/35 bg-red-500/12 px-4 py-3 text-sm text-red-700 dark:text-red-100">
           {submitMessage}
         </div>
       ) : null}

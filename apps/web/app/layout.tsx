@@ -1,30 +1,46 @@
 import type { Metadata } from "next"
 import Script from "next/script"
-import { Manrope, Space_Grotesk } from "next/font/google"
+import { Inter, JetBrains_Mono, Playfair_Display } from "next/font/google"
 
 import "./globals.css"
-import { SiteFooter } from "@/components/site-footer"
-import { SiteNavbar } from "@/components/site-navbar"
+import { MarketingShell } from "@/components/marketing/marketing-shell"
 import { siteUrl } from "@/config/site"
 
-const fontBody = Manrope({
+const fontBody = Inter({
   subsets: ["latin"],
   variable: "--font-body",
 })
 
-const fontHeading = Space_Grotesk({
+const fontSerif = Playfair_Display({
   subsets: ["latin"],
-  variable: "--font-heading",
+  variable: "--font-serif",
+})
+
+const fontMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
 })
 
 const siteDescription =
-  "BurHan corporate hub with live hosting operations and upcoming expansion into cafe, web development, and game development."
+  "BurhanDev provides a multi-service ecosystem of hosting, design, and development engineered for bold digital growth."
+
+const themeBootstrapScript = `
+  (function() {
+    var storageKey = 'burhandev-theme';
+    var root = document.documentElement;
+    var stored = localStorage.getItem(storageKey);
+    var systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var theme = stored === 'light' || stored === 'dark' ? stored : (systemPrefersDark ? 'dark' : 'light');
+    root.classList.toggle('dark', theme === 'dark');
+    root.style.colorScheme = theme;
+  })();
+`
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "BurHan Hosting",
-    template: "%s | BurHan Hosting",
+    default: "BURHANDEV - Digital Journey",
+    template: "%s | BURHANDEV",
   },
   description: siteDescription,
   alternates: {
@@ -33,13 +49,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: siteUrl,
-    title: "BurHan Hosting",
+    title: "BURHANDEV - Digital Journey",
     description: siteDescription,
-    siteName: "BurHan Hosting",
+    siteName: "BURHANDEV",
   },
   twitter: {
     card: "summary_large_image",
-    title: "BurHan Hosting",
+    title: "BURHANDEV - Digital Journey",
     description: siteDescription,
   },
 }
@@ -50,8 +66,13 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${fontBody.variable} ${fontHeading.variable} antialiased`}>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${fontBody.variable} ${fontSerif.variable} ${fontMono.variable} scroll-smooth antialiased`}
+    >
       <head>
+        <script dangerouslySetInnerHTML={{ __html: themeBootstrapScript }} />
         {process.env.NODE_ENV === "development" && (
           <Script
             src="//unpkg.com/react-grab/dist/index.global.js"
@@ -67,14 +88,7 @@ export default function RootLayout({
         )}
       </head>
       <body>
-        <div className="site-shell">
-          <div className="site-aura" />
-          <SiteNavbar />
-          <main className="relative z-10 flex-1 pb-20 sm:pb-16">
-            {children}
-          </main>
-          <SiteFooter />
-        </div>
+        <MarketingShell>{children}</MarketingShell>
       </body>
     </html>
   )

@@ -76,7 +76,7 @@ export default function CompanyHomeConceptPage() {
       <section className="section-shell">
         <Card className="glass-panel">
           <CardHeader>
-            <CardTitle className="text-white">About BurHan Hosting</CardTitle>
+            <CardTitle className="text-foreground">About BurHan Hosting</CardTitle>
             <CardDescription>
               Starting your first game server should not feel complicated. Our platform and support
               model are built to guide you from setup to reliable daily operations.
@@ -111,7 +111,7 @@ export default function CompanyHomeConceptPage() {
         <Card className="glass-panel">
           <CardHeader>
             <p className="text-xs tracking-[0.18em] text-primary uppercase">Support and Infrastructure</p>
-            <CardTitle className="text-white">Core principles behind our operations</CardTitle>
+            <CardTitle className="text-foreground">Core principles behind our operations</CardTitle>
             <CardDescription>
               These are the same principles used to shape onboarding, uptime expectations, and
               day-to-day customer support.
@@ -121,13 +121,13 @@ export default function CompanyHomeConceptPage() {
             {platformPillars.map((pillar) => (
               <div
                 key={pillar.title}
-                className="rounded-2xl border border-white/12 bg-black/35 p-4"
+                className="rounded-2xl border border-border bg-background/70 p-4"
               >
                 <div className="flex items-center gap-3">
                   <div className="rounded-xl border border-primary/35 bg-primary/10 p-2 text-primary">
                     <pillar.icon className="h-4 w-4" />
                   </div>
-                  <p className="font-medium text-white">{pillar.title}</p>
+                  <p className="font-medium text-foreground">{pillar.title}</p>
                 </div>
                 <p className="mt-3 text-sm leading-7 text-muted-foreground">{pillar.description}</p>
               </div>
@@ -139,7 +139,7 @@ export default function CompanyHomeConceptPage() {
       <section className="section-shell">
         <Card className="glass-panel">
           <CardHeader>
-            <CardTitle className="text-white">Partners that trust us</CardTitle>
+            <CardTitle className="text-foreground">Partners that trust us</CardTitle>
             <CardDescription>
               BurHan works with gaming communities, creators, and teams that need reliable server
               operations and responsive support.
