@@ -1,165 +1,131 @@
 "use client"
 
-import * as React from "react"
+import { Globe, Headset, LibraryBig, Rocket, ShieldCheck } from "lucide-react"
 
 import { Badge } from "@workspace/ui/components/badge"
 import { cn } from "@/lib/utils"
-import { ourStoryCards, ourStoryValues } from "@/config/site"
 
-interface BentoItemProps {
+const leftFeatureCards = [
+  {
+    title: "100% Uptime",
+    description: "That is not a typo. Network stability and operational uptime are built into our SLA mindset.",
+    icon: Globe,
+    accent: "emerald",
+    className: "xl:mr-10",
+  },
+  {
+    title: "24/7 Support",
+    description: "Our support team is available around the clock to help with issues, migrations, and tuning.",
+    icon: Headset,
+    accent: "slate",
+    className: "xl:-ml-8",
+  },
+  {
+    title: "Free Subdomain",
+    description: "Get a clean custom IP address path using our subdomain creator for easier player access.",
+    icon: Globe,
+    accent: "blue",
+    className: "xl:ml-6",
+  },
+] as const
+
+const rightFeatureCards = [
+  {
+    title: "Instant Setup",
+    description: "Start hosting in seconds after purchasing your game server and getting scoped correctly.",
+    icon: Rocket,
+    accent: "amber",
+    className: "xl:ml-10",
+  },
+  {
+    title: "DDoS Protection",
+    description: "We guarantee protective layers and infrastructure-first handling against disruptive attack traffic.",
+    icon: ShieldCheck,
+    accent: "rose",
+    className: "xl:mr-6",
+  },
+  {
+    title: "Expanding Game Library",
+    description: "Our team is constantly adding and refining support for the games communities actually run.",
+    icon: LibraryBig,
+    accent: "violet",
+    className: "xl:ml-4",
+  },
+] as const
+
+const accentClasses = {
+  emerald: "border-emerald-500/55 shadow-[0_18px_50px_-35px_rgba(16,185,129,0.4)]",
+  amber: "border-amber-500/55 shadow-[0_18px_50px_-35px_rgba(245,158,11,0.38)]",
+  slate: "border-slate-500/45 shadow-[0_18px_50px_-35px_rgba(71,85,105,0.35)]",
+  rose: "border-rose-500/55 shadow-[0_18px_50px_-35px_rgba(244,63,94,0.38)]",
+  blue: "border-blue-500/55 shadow-[0_18px_50px_-35px_rgba(59,130,246,0.4)]",
+  violet: "border-violet-500/55 shadow-[0_18px_50px_-35px_rgba(139,92,246,0.4)]",
+} as const
+
+function FeatureCard({
+  title,
+  description,
+  icon: Icon,
+  accent,
+  className,
+}: {
+  title: string
+  description: string
+  icon: typeof Globe
+  accent: keyof typeof accentClasses
   className?: string
-  children: React.ReactNode
-}
-
-function StoryBadge({ children }: { children: React.ReactNode }) {
+}) {
   return (
-    <Badge variant="outline" className="w-fit border-border/80 bg-background/40 text-foreground/80">
-      {children}
-    </Badge>
-  )
-}
-
-function BentoItem({ className, children }: BentoItemProps) {
-  const itemRef = React.useRef<HTMLDivElement>(null)
-
-  React.useEffect(() => {
-    const item = itemRef.current
-
-    if (!item) {
-      return
-    }
-
-    const handleMouseMove = (event: MouseEvent) => {
-      const rect = item.getBoundingClientRect()
-      const x = event.clientX - rect.left
-      const y = event.clientY - rect.top
-
-      item.style.setProperty("--mouse-x", `${x}px`)
-      item.style.setProperty("--mouse-y", `${y}px`)
-    }
-
-    item.addEventListener("mousemove", handleMouseMove)
-
-    return () => {
-      item.removeEventListener("mousemove", handleMouseMove)
-    }
-  }, [])
-
-  return (
-    <div ref={itemRef} className={cn("story-bento-item", className)}>
-      {children}
+    <div
+      className={cn(
+        "rounded-[1.5rem] border bg-card/85 p-5 backdrop-blur-xl transition-transform duration-300 dark:bg-card/80",
+        accentClasses[accent],
+        className,
+      )}
+    >
+      <div className="flex items-start gap-4">
+        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-background/70 text-primary shadow-[inset_0_1px_0_rgba(255,255,255,0.16)]">
+          <Icon className="h-6 w-6" />
+        </div>
+        <div className="space-y-2">
+          <h3 className="text-xl font-bold leading-tight text-foreground">{title}</h3>
+          <p className="text-sm leading-7 text-muted-foreground">{description}</p>
+        </div>
+      </div>
     </div>
   )
 }
 
 export function OurStoryBentoGrid() {
-  const [missionCard, promiseCard, founderCard] = ourStoryCards
-  const painPoints = ["Hidden node practices", "Lag spikes", "Crash-heavy sessions"]
-
   return (
-    <section className="our-story-shell relative z-20 -mt-12">
-      <div className="relative z-10 w-full px-4 sm:px-6 lg:px-10">
-        <div className="our-story-frame">
-          <div className="our-story-header">
-            <div className="our-story-header-copy">
-              <Badge variant="outline">Our Story</Badge>
-              <h2 className="mt-4 max-w-3xl font-[family-name:var(--font-heading)] text-3xl font-semibold text-white sm:text-4xl lg:text-5xl">
-                Why we stepped into game hosting in the first place.
-              </h2>
-              <p className="mt-4 max-w-2xl text-base leading-8 text-muted-foreground">
-                We are gamers ourselves. Playing games is one of our hobbies, and hosting private
-                servers for our own sessions became part of that journey.
-              </p>
-            </div>
-            <div className="our-story-values-grid">
-              {ourStoryValues.map((value) => (
-                <div key={value} className="our-story-value-box">
-                  <span className="our-story-value-dot" />
-                  <p className="text-sm font-medium text-foreground/88">{value}</p>
-                </div>
-              ))}
-            </div>
+    <section className="relative overflow-hidden py-24">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,0,0,0.08),transparent_34%)] dark:bg-[radial-gradient(circle_at_center,rgba(255,0,0,0.12),transparent_34%)]" />
+
+      <div className="relative z-10 w-full px-6 lg:px-10">
+        <div className="grid items-center gap-6 xl:grid-cols-[minmax(0,1fr)_minmax(24rem,0.88fr)_minmax(0,1fr)]">
+          <div className="grid gap-5 xl:-rotate-1">
+            {leftFeatureCards.map((card) => (
+              <FeatureCard key={card.title} {...card} />
+            ))}
           </div>
 
-          <div className="story-bento-grid">
-            <BentoItem className="xl:col-span-2 xl:row-span-2">
-              <div className="flex h-full flex-col justify-between gap-8">
-                <div className="space-y-4">
-                  <StoryBadge>Built by gamers</StoryBadge>
-                  <h3 className="max-w-xl text-2xl font-semibold text-white sm:text-3xl">
-                    We built BurHan Hosting because we were tired of losing the fun to unstable
-                    servers.
-                  </h3>
-                  <p className="max-w-2xl text-sm leading-7 text-foreground/85">
-                    When we looked at game hosting options in Malaysia, we kept seeing the same
-                    issue: too many providers were not fully honest about how their servers were
-                    actually handled behind the scenes.
-                  </p>
-                  <p className="max-w-2xl text-sm leading-7 text-foreground/85">
-                    That usually turned into lag spikes, crashes, and inconsistent performance that
-                    took the excitement out of playing with friends. BurHan Hosting was built because
-                    we wanted to give local players a better experience.
-                  </p>
-                </div>
-                <div className="grid gap-3 md:grid-cols-3">
-                  {painPoints.map((point) => (
-                    <div key={point} className="our-story-sub-box">
-                      {point}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </BentoItem>
+          <div className="mx-auto max-w-lg px-2 text-center xl:-translate-y-2">
+            <Badge className="rounded-full border-primary/15 bg-primary/5 px-3 py-1 text-[11px] tracking-[0.24em] text-primary uppercase">
+              Hosting Features
+            </Badge>
+            <h2 className="mt-5 text-4xl font-black tracking-tight text-foreground sm:text-5xl xl:text-[3.4rem]">
+              EXCLUSIVE FEATURES
+            </h2>
+            <p className="mt-5 text-base leading-7 text-muted-foreground sm:text-lg">
+              We offer a wide variety of features that enhance your gaming experience and provide
+              the most practical hosting hardware at the best possible value.
+            </p>
+          </div>
 
-            <BentoItem>
-              <StoryBadge>{missionCard.title}</StoryBadge>
-              <h3 className="mt-3 text-xl font-semibold text-white">
-                Affordable hosting for Malaysia.
-              </h3>
-              <p className="mt-3 text-sm leading-7 text-muted-foreground">{missionCard.body}</p>
-            </BentoItem>
-
-            <BentoItem>
-              <StoryBadge>{promiseCard.title}</StoryBadge>
-              <h3 className="mt-3 text-xl font-semibold text-white">
-                Better performance without the usual excuses.
-              </h3>
-              <p className="mt-3 text-sm leading-7 text-muted-foreground">{promiseCard.body}</p>
-            </BentoItem>
-
-            <BentoItem className="md:col-span-2 xl:col-span-1 xl:row-span-2">
-              <StoryBadge>{founderCard.title}</StoryBadge>
-              <div className="our-story-quote-box mt-4">
-                <p className="text-lg leading-8 text-white/92">{founderCard.body}</p>
-              </div>
-              <p className="mt-4 text-sm leading-7 text-muted-foreground">
-                That mindset is the core of BURHANDEV: if people can play together smoothly, relax,
-                and enjoy the moment, then we are doing the right thing.
-              </p>
-            </BentoItem>
-
-            <BentoItem className="md:col-span-2 xl:col-span-2">
-              <StoryBadge>Service and honesty</StoryBadge>
-              <h3 className="mt-3 text-2xl font-semibold text-white">
-                Good service matters as much as raw server specs.
-              </h3>
-              <p className="mt-3 max-w-3xl text-sm leading-7 text-muted-foreground">
-                We want our users to feel looked after. That means better treatment, clearer answers,
-                and no dishonest replies when customers ask important questions about our service,
-                setup, or infrastructure.
-              </p>
-            </BentoItem>
-
-            <BentoItem className="xl:col-start-4 xl:row-start-2">
-              <StoryBadge>Local focus</StoryBadge>
-              <h3 className="mt-3 text-xl font-semibold text-white">
-                Made for Malaysian players first.
-              </h3>
-              <p className="mt-3 text-sm leading-7 text-muted-foreground">
-                Our goal is simple: deliver a smoother, more trustworthy hosting option for people in
-                Malaysia who just want their server to run properly and stay fun to play on.
-              </p>
-            </BentoItem>
+          <div className="grid gap-5 xl:rotate-1">
+            {rightFeatureCards.map((card) => (
+              <FeatureCard key={card.title} {...card} />
+            ))}
           </div>
         </div>
       </div>

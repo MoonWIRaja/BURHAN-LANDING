@@ -4,6 +4,7 @@ import * as React from "react"
 import { motion, useMotionValue, useSpring } from "framer-motion"
 
 import { cn } from "@/lib/utils"
+import { useTheme } from "@/components/marketing/use-theme"
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient"
 import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button"
 import { WavyBackground } from "@/components/ui/wavy-background"
@@ -170,6 +171,8 @@ const FloatingIconsHero = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement> & FloatingIconsHeroProps
 >(({ className, title, subtitle, ctaText, ctaHref, icons, ...props }, ref) => {
+  const { theme } = useTheme()
+  const isDarkTheme = theme === "dark"
   const sectionRef = React.useRef<HTMLDivElement>(null)
   const badgeRef = React.useRef<HTMLDivElement>(null)
   const consoleRef = React.useRef<HTMLDivElement>(null)
@@ -350,12 +353,16 @@ const FloatingIconsHero = React.forwardRef<
     >
       <WavyBackground
         containerClassName="pointer-events-none absolute inset-0"
-        backgroundFill="#000000"
+        backgroundFill={isDarkTheme ? "#000000" : "#ffffff"}
         blur={14}
         speed="fast"
-        waveOpacity={0.3}
+        waveOpacity={isDarkTheme ? 0.3 : 0.14}
         waveWidth={72}
-        colors={["#ffffff", "#f8fafc", "#ef4444", "#dc2626", "#ffffff"]}
+        colors={
+          isDarkTheme
+            ? ["#ffffff", "#f8fafc", "#ef4444", "#dc2626", "#ffffff"]
+            : ["#d4d4d8", "#e4e4e7", "#fca5a5", "#fecaca", "#d4d4d8"]
+        }
       />
       <div className="absolute inset-0 z-0 h-full w-full">
         {icons.map((iconData, index) => (
@@ -391,18 +398,40 @@ const FloatingIconsHero = React.forwardRef<
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             className="mx-auto mt-6 w-[46rem] max-w-full"
           >
-            <div className="overflow-hidden rounded-[2rem] border border-white/12 bg-black/70 text-left shadow-[0_30px_100px_-30px_rgba(239,68,68,0.45)] backdrop-blur-xl">
-              <div className="flex items-center justify-between border-b border-white/10 px-5 py-4">
+            <div
+              className={cn(
+                "overflow-hidden rounded-[2rem] text-left backdrop-blur-xl",
+                isDarkTheme
+                  ? "border border-white/12 bg-black/70 shadow-[0_30px_100px_-30px_rgba(239,68,68,0.45)]"
+                  : "border border-black/8 bg-white/80 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.18)]",
+              )}
+            >
+              <div
+                className={cn(
+                  "flex items-center justify-between px-5 py-4",
+                  isDarkTheme ? "border-b border-white/10" : "border-b border-black/8",
+                )}
+              >
                 <div className="flex items-center gap-2.5">
                   <span className="h-3 w-3 rounded-full bg-red-500" />
                   <span className="h-3 w-3 rounded-full bg-yellow-400" />
                   <span className="h-3 w-3 rounded-full bg-emerald-400" />
                 </div>
-                <span className="text-xs font-medium tracking-[0.28em] text-white/55 uppercase">
+                <span
+                  className={cn(
+                    "text-xs font-medium tracking-[0.28em] uppercase",
+                    isDarkTheme ? "text-white/55" : "text-black/45",
+                  )}
+                >
                   burhan.my
                 </span>
               </div>
-              <div className="space-y-3 px-5 py-5 font-mono text-sm text-white/85 md:px-6 md:py-6 md:text-base">
+              <div
+                className={cn(
+                  "space-y-3 px-5 py-5 font-mono text-sm md:px-6 md:py-6 md:text-base",
+                  isDarkTheme ? "text-white/85" : "text-black/75",
+                )}
+              >
                 {consoleLines.map((line, index) => (
                   <motion.div
                     key={line.text}
@@ -413,7 +442,10 @@ const FloatingIconsHero = React.forwardRef<
                       duration: 0.45,
                       ease: [0.22, 1, 0.36, 1],
                     }}
-                    className={cn("flex items-center gap-2", line.success && "text-emerald-300")}
+                    className={cn(
+                      "flex items-center gap-2",
+                      line.success && (isDarkTheme ? "text-emerald-300" : "text-emerald-600"),
+                    )}
                   >
                     <span className="text-red-400">$</span>
                     <span>{line.text}</span>
@@ -427,13 +459,19 @@ const FloatingIconsHero = React.forwardRef<
                     duration: 0.45,
                     ease: [0.22, 1, 0.36, 1],
                   }}
-                  className="flex items-center overflow-hidden whitespace-nowrap text-white/75"
+                  className={cn(
+                    "flex items-center overflow-hidden whitespace-nowrap",
+                    isDarkTheme ? "text-white/75" : "text-black/65",
+                  )}
                 >
                   <span className="mr-2 shrink-0 text-red-400">$</span>
                   <span className="inline-flex items-center whitespace-nowrap">
                     <span>{typedSubtitle}</span>
                     <motion.span
-                      className="ml-1 inline-flex h-5 w-0.5 shrink-0 rounded-sm bg-white/90 align-middle"
+                      className={cn(
+                        "ml-1 inline-flex h-5 w-0.5 shrink-0 rounded-sm align-middle",
+                        isDarkTheme ? "bg-white/90" : "bg-black/75",
+                      )}
                       animate={{ opacity: [1, 0, 1] }}
                       transition={{
                         duration: 0.9,
@@ -452,7 +490,12 @@ const FloatingIconsHero = React.forwardRef<
                 <InteractiveHoverButton
                   href={ctaHref}
                   text={ctaText}
-                  className="h-14 w-[15.5rem] border-white/12 bg-black/55 px-4 text-sm font-semibold text-white shadow-[0_18px_50px_-30px_rgba(239,68,68,0.75)] backdrop-blur-xl"
+                  className={cn(
+                    "h-14 w-[15.5rem] px-4 text-sm font-semibold backdrop-blur-xl",
+                    isDarkTheme
+                      ? "border-white/12 bg-black/55 text-white shadow-[0_18px_50px_-30px_rgba(239,68,68,0.75)]"
+                      : "border-black/8 bg-white/75 text-black shadow-[0_18px_50px_-30px_rgba(0,0,0,0.22)]",
+                  )}
                 />
               </span>
             </div>

@@ -7,7 +7,7 @@ import { useState } from "react"
 
 import { landingNavLinks } from "@/config/landing"
 import { useTheme } from "@/components/marketing/use-theme"
-import { ThemeToggle } from "@/components/marketing/theme-toggle"
+import SkyToggle from "@/components/ui/sky-toggle"
 import { cn } from "@/lib/utils"
 
 function resolveHref(pathname: string, href: string) {
@@ -85,11 +85,11 @@ export function MarketingHeader() {
             </Link>
 
             <div className="ml-auto hidden items-center gap-3 sm:gap-4 lg:flex">
-              <ThemeToggle />
+              <SkyToggle />
             </div>
 
             <div className="ml-auto flex items-center gap-2 lg:hidden">
-              <ThemeToggle className="h-9 w-9" />
+              <SkyToggle />
               <button
                 type="button"
                 onClick={() => setIsOpen((current) => !current)}

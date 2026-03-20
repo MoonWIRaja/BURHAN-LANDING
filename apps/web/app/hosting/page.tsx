@@ -5,6 +5,7 @@ import { ArrowRight, BookOpen, CircleHelp, Headset, Star } from "lucide-react"
 import { Badge } from "@workspace/ui/components/badge"
 import { Button } from "@workspace/ui/components/button"
 import { Card, CardContent } from "@workspace/ui/components/card"
+import { ContactCta } from "@/components/marketing/contact-cta"
 import { FloatingIconsHeroDemo } from "@/components/floating-icons-hero-demo"
 import { HostingReviewsCarousel, type HostingReview } from "@/components/hosting-reviews-carousel"
 import { OurStoryBentoGrid } from "@/components/our-story-bento-grid"
@@ -117,7 +118,7 @@ export default function HostingPage() {
 
       <OurStoryBentoGrid />
 
-      <section className="section-shell pt-24">
+      <section className="w-full px-6 pt-24 lg:px-10">
         <div className="grid gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
           <div className="space-y-6">
             <Badge variant="outline">Custom Plan</Badge>
@@ -156,7 +157,7 @@ export default function HostingPage() {
         </div>
       </section>
 
-      <section className="section-shell pb-8 pt-24">
+      <section className="w-full px-6 pb-8 pt-24 lg:px-10">
         <div className="glass-panel relative overflow-hidden rounded-[2rem] p-8 sm:p-10">
           <div className="pointer-events-none absolute -left-20 top-14 h-44 w-44 rounded-full bg-primary/16 blur-3xl" />
           <div className="pointer-events-none absolute -bottom-16 right-16 h-48 w-48 rounded-full bg-red-500/12 blur-3xl" />
@@ -200,7 +201,7 @@ export default function HostingPage() {
         </div>
       </section>
 
-      <section className="section-shell pb-24 pt-16">
+      <section className="w-full px-6 pb-24 pt-16 lg:px-10">
         <div className="glass-panel relative overflow-hidden rounded-[2rem] p-8 sm:p-10">
           <div className="pointer-events-none absolute -left-20 top-10 h-40 w-40 rounded-full bg-indigo-500/12 blur-3xl" />
           <div className="pointer-events-none absolute -right-16 bottom-0 h-48 w-48 rounded-full bg-lime-500/12 blur-3xl" />
@@ -250,6 +251,8 @@ export default function HostingPage() {
           </div>
         </div>
       </section>
+
+      <ContactCta />
     </div>
   )
 }

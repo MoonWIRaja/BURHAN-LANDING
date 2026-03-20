@@ -5,6 +5,7 @@ import { Inter, JetBrains_Mono, Playfair_Display } from "next/font/google"
 import "./globals.css"
 import { MarketingShell } from "@/components/marketing/marketing-shell"
 import { siteUrl } from "@/config/site"
+import StyledComponentsRegistry from "@/lib/styled-components-registry"
 
 const fontBody = Inter({
   subsets: ["latin"],
@@ -88,7 +89,9 @@ export default function RootLayout({
         )}
       </head>
       <body>
-        <MarketingShell>{children}</MarketingShell>
+        <StyledComponentsRegistry>
+          <MarketingShell>{children}</MarketingShell>
+        </StyledComponentsRegistry>
       </body>
     </html>
   )

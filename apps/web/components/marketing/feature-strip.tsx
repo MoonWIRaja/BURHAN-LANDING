@@ -24,7 +24,9 @@ export function FeatureStrip() {
                   {item.title}
                   <ChevronRight className="h-3.5 w-3.5" />
                 </h3>
-                <p className="mt-1 text-xs text-zinc-500 dark:text-zinc-500">{item.description}</p>
+                <p className="mt-1 text-xs font-medium text-black/80 dark:text-zinc-400">
+                  {item.description}
+                </p>
               </div>
             </Link>
           )

@@ -24,6 +24,12 @@
 - New content config lives in `apps/web/config/landing.ts`.
 - New reusable components live under `apps/web/components/marketing/`.
 - Global design tokens and custom utility classes are in `apps/web/app/globals.css`.
+- Navbar behavior/details updated further:
+  - `Home` nav item now scrolls to hero and clears `/#hero` back to `/`
+  - `Sign in` and `GET STARTED` were removed from the main navbar
+  - navbar shell is transparent behind, while the navbar itself remains theme-specific
+- Theme toggle in navbar now uses a styled `SkyToggle` component from `apps/web/components/ui/sky-toggle.tsx`.
+- `styled-components` is now integrated into `apps/web` with a registry for Next app router SSR.
 
 ## Pages Already Restyled
 - `/`
@@ -34,7 +40,11 @@
 - `/company-home`
 - `/features`
 - `/team`
-- `/hosting` partially aligned through shell/token updates
+- `/hosting` significantly updated:
+  - hero background now follows theme correctly
+  - old `OurStoryBentoGrid` replaced with a centered hosting features composition
+  - main hosting sections widened to full-width layout
+  - hosting page now reuses `ContactCta` instead of a custom contact block
 
 ## Forms / Logic Preserved
 - Existing API routes are unchanged:
@@ -50,5 +60,6 @@
 
 ## Follow-up Likely Needed
 - Tighten visual parity with the provided screenshots, especially spacing and fine-grain contrast.
+- Review Brave-specific caching/stale-style issues if user reports visuals still not updating.
 - Consider moving public routes into a true `app/(marketing)` route group if the repo wants stricter route separation.
 - Continue restyling older hosting-specific showcase components if they still feel visually inconsistent.

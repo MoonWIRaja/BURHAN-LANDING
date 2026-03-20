@@ -16,7 +16,9 @@ export function ServicesGrid() {
             New
           </span>
           <h3 className="mb-2 text-xl font-bold text-foreground">{card.title}</h3>
-          <p className="mb-8 text-sm leading-relaxed text-muted-foreground">{card.description}</p>
+          <p className="mb-8 text-sm leading-relaxed text-zinc-700 dark:text-zinc-400">
+            {card.description}
+          </p>
           <Link
             href={card.href}
             className="mb-10 inline-flex items-center justify-center gap-2 self-center rounded-full bg-black px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-primary dark:bg-white dark:text-black dark:hover:bg-primary dark:hover:text-white"
