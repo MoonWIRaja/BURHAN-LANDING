@@ -101,7 +101,7 @@ export const businessUnits: BusinessUnit[] = [
     launchWindow: "Target: 2026",
     primaryCta: {
       label: "Get Cafe Updates",
-      href: "/contact?service=cafe&sourcePage=/services/cafe",
+      href: discordUrl,
     },
   },
   {
@@ -134,9 +134,7 @@ export const businessUnits: BusinessUnit[] = [
 
 export const siteNavigation: SiteNavItem[] = [
   { name: "Home", url: "/", icon: "home" },
-  { name: "Services", url: "/services", icon: "services" },
   { name: "FAQ", url: "/faq", icon: "faq" },
-  { name: "Contact", url: "/contact", icon: "contact" },
 ]
 
 export const supportedGames = [

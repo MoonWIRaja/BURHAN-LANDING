@@ -35,7 +35,9 @@ export function ContactCta() {
       </div>
 
       <Link
-        href="/contact?service=cafe&sourcePage=/"
+        href="https://discord.burhan.my"
+        target="_blank"
+        rel="noreferrer"
         className="red-btn-glow relative z-10 mt-12 inline-flex items-center gap-3 rounded-full bg-primary px-10 py-3.5 font-[family-name:var(--font-mono)] text-sm font-bold tracking-[0.18em] text-white uppercase transition hover:scale-105 active:scale-95"
       >
         &gt; Join Our Community

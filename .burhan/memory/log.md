@@ -1,5 +1,48 @@
 # Project Memory Log
 
+## 2026-03-24
+
+### Homepage founder-story rewrite and CTA cleanup
+- Reworked homepage copy in `apps/web/app/page.tsx` to reflect a founder-story / Malaysia-first direction.
+- Hero headline now reads `Build your journey` / `with us.` with red text emphasis on `journey`.
+- Hero body now emphasizes:
+  - four young minds
+  - friendly
+  - stable
+  - high-quality
+  services for Malaysians.
+- About section heading was simplified to `ABOUT US` and restyled to match the serif display treatment used by `Our Story`.
+
+### About grid content rewrite
+- Replaced old generic about-card messaging with:
+  - `4 YOUNG MINDS`
+  - `AFFORDABLE PRICING`
+  - `BUILT FOR MALAYSIA`
+- Updated descriptions to focus on:
+  - founder inspiration
+  - fair pricing for Malaysians
+  - local relevance and service quality
+
+### Story timeline rewrite
+- Rewrote `landingStoryItems` in `apps/web/config/landing.ts` to reflect the actual brand narrative:
+  - `2023: The Beginning of Game Hosting`
+  - `2025: The First Step`
+  - `04.03.2026: The Birth of BURHAN HOSTING`
+- Updated first story to explain that one of the four teenagers started learning servers/local hosting due to laggy overseas hosting.
+- Updated second story to center around the start of the `BURHAN BISTRO` community.
+- Added support for one inline story link in `apps/web/components/marketing/story-section.tsx`.
+- `BURHAN BISTRO` now links to `https://discord.burhan.my`.
+- Updated third story to describe the launch of BURHAN HOSTING with affordable pricing and ease of use.
+
+### CTA and route exposure changes
+- Final story CTA block now says `GO TO BURHAN HOTING` with supporting text `Start your hosting journey with us.`
+- Final story CTA button now says `BURHAN CONSOLE` and links to `https://console.burhan.my/`.
+- Replaced homepage hero CTAs:
+  - primary -> `/hosting`
+  - secondary -> `https://console.burhan.my/`
+- Removed `/services` and `/contact` from top-level site navigation in `apps/web/config/site.ts`.
+- Replaced cafe/community contact-style links with `https://discord.burhan.my` in homepage/community-facing surfaces.
+
 ## 2026-03-20
 
 ### BurhanDev landing redesign implemented

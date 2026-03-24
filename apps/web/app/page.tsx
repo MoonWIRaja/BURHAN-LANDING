@@ -23,29 +23,47 @@ export default function HomePage() {
       <section id="hero" className="relative flex min-h-[calc(100vh-96px)] flex-col bg-background">
         <div className="flex w-full flex-1 flex-col items-center gap-12 px-6 py-20 md:flex-row lg:px-10">
           <div className="w-full space-y-8 md:w-1/2">
-            <h1 className="text-5xl font-semibold leading-[1.05] tracking-tight text-foreground md:text-7xl">
-              Discover the joy of{" "}
-              <span className="inline-block rounded-full border border-primary/20 bg-red-50 px-4 py-1 text-primary dark:bg-red-950/30">
-                effortless
-              </span>{" "}
-              digital solutions with BurhanDev.
+            <h1 className="mb-4 font-[family-name:var(--font-serif)] text-5xl font-black italic leading-[1.05] tracking-tight text-foreground md:text-6xl">
+              Build your{" "}
+              <span className="inline-block text-primary">
+                journey
+              </span>
+              <br />
+              with us.
             </h1>
             <p className="max-w-xl text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
-              BurhanDev provides a multi-service ecosystem of hosting, design, and development,
-              engineered to revolutionize the way you think about digital infrastructure.
+              BurhanDev was born from the{" "}
+              <span className="inline-block text-primary">
+                vision of four young minds
+              </span>
+              , with a mission to build{" "}
+              <span className="inline-block text-primary">
+                friendly
+              </span>
+              ,{" "}
+              <span className="inline-block text-primary">
+                stable
+              </span>
+              , and{" "}
+              <span className="inline-block text-primary">
+                high-quality
+              </span>{" "}
+              services for all Malaysians.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link
-                href="/contact"
+                href="/hosting"
                 className="inline-flex items-center rounded-full bg-primary px-7 py-3 text-sm font-semibold text-white transition hover:bg-black dark:hover:bg-white dark:hover:text-black"
               >
-                Start Your Journey
+                Explore Hosting
               </Link>
               <Link
-                href="/services"
+                href="https://console.burhan.my/"
+                target="_blank"
+                rel="noreferrer"
                 className="inline-flex items-center rounded-full border border-border bg-background px-7 py-3 text-sm font-semibold text-foreground transition hover:border-primary hover:text-primary"
               >
-                Explore Services
+                BURHAN CONSOLE
               </Link>
             </div>
           </div>
@@ -61,10 +79,8 @@ export default function HomePage() {
       <section id="about" className="bg-background py-32 text-foreground">
         <div className="w-full px-6 lg:px-10">
           <div className="mx-auto mb-20 max-w-4xl text-center">
-            <h2 className="text-3xl font-normal leading-tight tracking-tight md:text-5xl">
-              We fuel innovation and growth by delivering powerful global solutions that empower
-              businesses and individuals to succeed in today&apos;s{" "}
-              <span className="italic text-primary">ever-evolving</span> world.
+            <h2 className="mb-4 font-[family-name:var(--font-serif)] text-5xl font-black italic leading-[1.05] tracking-tight text-foreground md:text-6xl">
+              ABOUT <span className="text-primary">US</span>
             </h2>
           </div>
           <AboutGrid />

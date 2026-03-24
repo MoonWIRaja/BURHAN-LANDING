@@ -23,6 +23,9 @@ export interface LandingStoryItem {
   yearLabel: string
   title: string
   description: string
+  descriptionLinkLabel?: string
+  descriptionLinkHref?: string
+  descriptionAfterLink?: string
   quote?: string
   accent?: "primary" | "default"
   visual: "corridor" | "globe" | "cube"
@@ -79,50 +82,57 @@ export const landingFeatureStripItems: LandingFeatureStripItem[] = [
 
 export const landingAboutCards: LandingAboutCard[] = [
   {
-    title: "7 years of innovation",
+    title: "4 YOUNG MINDS",
     description:
-      "Pushing boundaries since 2017. We have built digital solutions that evolve with the needs of modern teams.",
+      "Inspired by four young minds, BurhanDev was created to deliver better, more meaningful services for Malaysians.",
     icon: Sparkles,
   },
   {
-    title: "Trusted expertise",
+    title: "AFFORDABLE PRICING",
     description:
-      "Delivering high-stakes digital infrastructure globally. Years of hands-on experience and client insights.",
+      "BurhanDev believes better services should stay accessible, with pricing that feels fair for Malaysians.",
     icon: Globe,
   },
   {
-    title: "Path to success",
+    title: "BUILT FOR MALAYSIA",
     description:
-      "Strategic roadmaps to scale your business. Innovation and dedication shaped to consistently deliver satisfaction.",
+      "Made for Malaysia, our services are built to be friendly, stable, and high-quality for real local needs.",
     icon: Compass,
   },
 ]
 
 export const landingStoryItems: LandingStoryItem[] = [
   {
-    yearLabel: "2017: The Hosting Era",
-    title: "2017: The Hosting Era",
+    yearLabel: "2023: The Beginning of Game Hosting",
+    title: "2023: The Beginning of Game Hosting",
     description:
-      "Our journey began with a mission to provide ultra-low latency game servers for the digital nomad and professional gamer.",
-    quote: 'We thought: "Digital performance should not be a luxury."',
+      "The idea began with one of the four teenagers who wanted to build a game hosting service. Even without experience, he kept learning, experimenting with local hosting, and exploring more about servers.",
+    quote:
+      "Why? Overseas hosting often felt laggy, and it kept taking away the fun of playing.",
     accent: "primary",
     visual: "corridor",
   },
   {
-    yearLabel: "The Creative Revolution",
-    title: "The Creative Revolution",
+    yearLabel: "2025: The First Step",
+    title: "2025: The First Step",
     description:
-      "We did not just stop at hosting. We evolved into a multi-disciplinary studio handling everything from high-performance infrastructure to cinematic 3D experiences.",
-    quote: "Why? Because your digital presence deserves better than bland solutions.",
+      "After nearly two years of holding onto the idea and facing every possibility, from being deceived to being left behind by old friends, we found each other and started a community called ",
+    descriptionLinkLabel: "BURHAN BISTRO",
+    descriptionLinkHref: "https://discord.burhan.my",
+    descriptionAfterLink:
+      " for gamers to play together in Minecraft servers and beyond.",
+    quote:
+      "Why? Profit was never our main focus. We simply loved seeing every user and every player feel happy and enjoy the game.",
     accent: "default",
     visual: "globe",
   },
   {
-    yearLabel: "Today: A 3D Powerhouse",
-    title: "Today: A 3D Powerhouse",
+    yearLabel: "04.03.2026: The Birth of BURHAN HOSTING",
+    title: "04.03.2026: The Birth of BURHAN HOSTING",
     description:
-      "With BURHAN HOSTING, CAFE, DESIGN, and DEVS, we are now a complete ecosystem of digital excellence, serving clients globally.",
-    quote: "Go bold, go digital, and build like you mean it.",
+      "After years of planning every detail, our first service was finally born. BURHAN HOSTING arrived with very affordable pricing, an easy-to-use experience, and a team ready to serve.",
+    quote:
+      "With a promise to deliver friendly, stable, and high-quality services for all Malaysians.",
     accent: "primary",
     visual: "cube",
   },
@@ -138,7 +148,7 @@ export const landingServiceCards: LandingServiceCard[] = [
   {
     title: "BURHAN CAFE",
     description: "Physical community spaces for digital creators and tech enthusiasts globally.",
-    href: "/contact?service=cafe&sourcePage=/",
+    href: "https://discord.burhan.my",
     visual: "cafe",
   },
   {
